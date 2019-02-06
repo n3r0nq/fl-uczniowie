@@ -9,17 +9,29 @@ baza_plik = 'quiz.db'
 baza = SqliteDatabase(baza_plik)  # instancja bazy
 
 ### MODELE #
+
+
 class BazaModel(Model):
     class Meta:
         database = baza
 
 
-class Uczen(BazaModel):
-    pass
-
-
 class Klasa(BazaModel):
-    pass
+    klasa = CharField(null=False)
+    rok_naboru = CharField(null=False)
+    rok_matury = CharField(null=False)
+
+
+class Uczen(BazaModel):
+    imie = CharField(null=False)
+    nazwisko = CharField(null=False)
+    plec = IntegerField()
+    klasa = ForeignKeyField(Klasa, related_name='uczniowie')
+
+
+def main(args):
+    baza.connect()  # połączenie z bazą
+    baza.create_tables([Klasa, Uczen])
 
 
 if __name__ == '__main__':

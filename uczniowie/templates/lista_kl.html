@@ -1,0 +1,17 @@
+{% extends "szablon.html" %}
+{% block tytul %}KLASA++ - lista klas{% endblock %}
+{% block h1 %}KLASA++ - lista klas{% endblock %}
+{% block tresc %}
+  <h2>Lista Klas</h2>
+  <ol>
+    {% for k in query %}
+        <li class="elemdel">
+          <p>Klasa: {{ k.klasa }}</p>
+          <p>Rok matury: {{k.rok_matury}}</p>
+          <p>Rok naboru: {{k.rok_naboru}}</p>
+        </li>
+
+    {% endfor %}
+  </ol>
+
+{% endblock %}

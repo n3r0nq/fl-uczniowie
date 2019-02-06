@@ -1,0 +1,15 @@
+{% extends "szablon.html" %}
+{% block tytul %}KLASA++ - lista uczniow{% endblock %}
+{% block h1 %}KLASA++ - lista uczniow{% endblock %}
+{% block tresc %}
+  <h2>Lista uczniow</h2>
+  <ol>
+    {% for p in query %}
+        <li class="elemdel">{{ p.pytanie }}
+        <a href="{{ url_for('edytuj', pid=p.id) }}" class="btn btn-sm btn-primary">Edytuj</a>
+        <a href="{{ url_for('usun', pid=p.id) }}" class="btn btn-sm btn-danger">Usuń</a>
+        </li>
+    {% endfor %}
+  </ol>
+
+{% endblock %}
