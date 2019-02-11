@@ -25,5 +25,13 @@ class DodajForm(FlaskForm):
     rok_naboru = StringField('Rok naboru:',
                              validators=[Required(message=blad1)])
 
+
 class DodajUczForm(FlaskForm):
-    pass
+    uczen = HiddenField('Uczen id')
+    imie = StringField('Imie:',
+                       validators=[Required(message=blad1)])
+    nazwisko = StringField('Nazwisko:',
+                           validators=[Required(message=blad1)])
+    plec = StringField('Płeć:',
+                       validators=[Required(message=blad1)])
+    klasa = SelectField('Klasa: ', coerce=int)

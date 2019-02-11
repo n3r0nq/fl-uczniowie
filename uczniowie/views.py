@@ -45,20 +45,21 @@ def dodaj_kl():
 
     return render_template('dodaj_kl.html', form=form)
 
+
 @app.route('/dodaj_ucz', methods=['GET', 'POST'])
 def dodaj_ucz():
     form = DodajUczForm()
-    form.uczen.choices = [(u.id, u.klasa) for k in Klasa.select()]
+    form.uczen.choices = [(u.id, u.imie) for u in Uczen.select()]
 
     if form.validate_on_submit():
         print(form.data)
-        k = Klasa(klasa=form.klasa.data, rok_naboru=form.rok_naboru.data,
-                  rok_matury=form.rok_matury.data)
-        k.save()
+        u = Uczen(imie=form.imie.data, nazwisko=form.nazwisko.data,
+                  plec=form.plec.data, klasa=form.klasa.data)
+        u.save()
 
-        flash("Dodano klase!", "sukces")
+        flash("Dodano ucznia!", "sukces")
         return redirect(url_for('index'))
     elif request.method == 'POST':
         flash_errors(form)
 
-    return render_template('dodaj_kl.html', form=form)
+    return render_template('dodaj_ucz.html', form=form)
