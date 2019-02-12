@@ -25,7 +25,7 @@ class Klasa(BazaModel):
 class Uczen(BazaModel):
     imie = CharField(null=False)
     nazwisko = CharField(null=False)
-    plec = CharField(null=False)
+    plec = CharField('Płeć')
     klasa = ForeignKeyField(Klasa, related_name='uczniowie')
 
 

@@ -4,11 +4,13 @@
 {% block tresc %}
   <h2>Lista Uczniow</h2>
   <ol>
-    {% for u in query %}
+    {% for k in query %}
         <li class="elemdel">
-          <p>Imie: {{ u.imie }}</p>
-          <p>Nazwisko: {{u.nazwisko}}</p>
-          <p>Płeć: {{u.plec}}</p>
+          <p>Imie: {{ k.imie }}</p>
+          <p>Nazwisko: {{k.nazwisko}}</p>
+          <p>Płeć: {{k.plec}}</p>
+          <p>Klasa: {{k.klasa}}</p>
+          <a href="{{url_for('uczen_edytuj', kid=k.id)}}" class="btn btn-sm btn-primary">Edytuj</a>
         </li>
 
     {% endfor %}

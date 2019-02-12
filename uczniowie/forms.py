@@ -9,13 +9,6 @@ from wtforms.validators import Required
 blad1 = 'To pole jest wymagane'
 
 
-class UczenForm(FlaskForm):
-    id = HiddenField('Uczen id')
-    imie = HiddenField('Imie id')
-    nazwisko = HiddenField('Nazwisko id')
-    klasa = HiddenField('Klasa id')
-
-
 class DodajForm(FlaskForm):
     id = HiddenField('Klasa id')
     klasa = StringField('Klasa:',
@@ -27,7 +20,7 @@ class DodajForm(FlaskForm):
 
 
 class DodajUczForm(FlaskForm):
-    uczen = HiddenField('Uczen id')
+    id = HiddenField('Uczen id')
     imie = StringField('Imie:',
                        validators=[Required(message=blad1)])
     nazwisko = StringField('Nazwisko:',
